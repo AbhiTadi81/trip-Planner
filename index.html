@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Trip Planner</h1>
+
+        <!-- Budget Section -->
+        <div class="budget-section">
+            <div class="budget-input">
+                <label for="budget">Set Your Budget (Rs/-)</label>
+                <input type="number" id="budget" value="5000" min="0">
+            </div>
+            <div class="budget-display">
+                <div class="budget-item">
+                    <span>Total Cost</span>
+                    <span id="total-cost" class="amount">Rs/-0</span>
+                </div>
+                <div class="budget-item">
+                    <span>Remaining</span>
+                    <span id="remaining" class="amount">Rs/-5000</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget Allocation Section -->
+        <div class="budget-allocation">
+            <h2>Budget Allocation</h2>
+            <p>Adjust how your budget is allocated across services (must total 100%)</p>
+            
+            <div class="allocation-container">
+                <div class="allocation-item">
+                    <div class="allocation-label">
+                        <span>Hotel</span>
+                        <span id="hotel-percent">50%</span>
+                    </div>
+                    <input type="range" id="hotel-allocation" min="0" max="100" value="50" class="allocation-slider">
+                </div>
+                
+                <div class="allocation-item">
+                    <div class="allocation-label">
+                        <span>Bus</span>
+                        <span id="bus-percent">20%</span>
+                    </div>
+                    <input type="range" id="bus-allocation" min="0" max="100" value="20" class="allocation-slider">
+                </div>
+                
+                <div class="allocation-item">
+                    <div class="allocation-label">
+                        <span>Guide</span>
+                        <span id="guide-percent">30%</span>
+                    </div>
+                    <input type="range" id="guide-allocation" min="0" max="100" value="30" class="allocation-slider">
+                </div>
+            </div>
+            
+            <div class="total-allocation">
+                <span>Total: </span>
+                <span id="total-percent" class="allocation-total">100%</span>
+            </div>
+            <div id="allocation-warning" class="allocation-warning hidden">
+                Total allocation must equal 100%
+            </div>
+        </div>
+
+        <!-- Budget Category Limits -->
+        <div class="budget-limits">
+            <div class="limit-item">
+                <span id="hotel-limit-label">Hotel (50%)</span>
+                <div class="progress-bar">
+                    <div id="hotel-progress" class="progress"></div>
+                </div>
+                <span id="hotel-amount">Rs/-0 / Rs/-2500</span>
+            </div>
+            <div class="limit-item">
+                <span id="bus-limit-label">Bus (20%)</span>
+                <div class="progress-bar">
+                    <div id="bus-progress" class="progress"></div>
+                </div>
+                <span id="bus-amount">Rs/-0 / Rs/-1000</span>
+            </div>
+            <div class="limit-item">
+                <span id="guide-limit-label">Guide (30%)</span>
+                <div class="progress-bar">
+                    <div id="guide-progress" class="progress"></div>
+                </div>
+                <span id="guide-amount">Rs/-0 / Rs/-1500</span>
+            </div>
+        </div>
+
+        <!-- Source and Destination Section -->
+        <div class="location-section">
+            <div class="location-input">
+                <label for="source-location">Source Location</label>
+                <input type="text" id="source-location" placeholder="From">
+            </div>
+            <div class="location-input">
+                <label for="destination-location">Destination Location</label>
+                <input type="text" id="destination-location" placeholder="To">
+            </div>
+        </div>        
+
+        <!-- Services Sections -->
+        <div class="services">
+            <!-- Transportation Section -->
+            <section>
+                <h2>Select Transportation</h2>
+                <div class="date-time-selector">
+                    <div class="date-input">
+                        <label for="bus-date">Select Date:</label>
+                        <input type="date" id="bus-date" class="booking-date">
+                    </div>
+                    <div class="time-input">
+                        <label for="bus-time">Select Time:</label>
+                        <input type="time" id="bus-time" class="booking-time">
+                    </div>
+                </div>
+                <div class="cards" id="buses"></div>
+            </section>
+
+            <!-- Hotels Section -->
+            <section>
+                <h2>Select Accommodation</h2>
+                <div class="date-time-selector">
+                    <div class="date-input">
+                        <label for="hotel-date">Check-in Date:</label>
+                        <input type="date" id="hotel-date" class="booking-date">
+                    </div>
+                    <div class="time-input">
+                        <label for="hotel-time">Check-in Time:</label>
+                        <input type="time" id="hotel-time" class="booking-time">
+                    </div>
+                </div>
+                <div class="cards" id="hotels"></div>
+            </section>
+
+            <!-- Guides Section -->
+            <section>
+                <h2>Select Tour Guide</h2>
+                <div class="date-time-selector">
+                    <div class="date-input">
+                        <label for="guide-date">Tour Date:</label>
+                        <input type="date" id="guide-date" class="booking-date">
+                    </div>
+                    <div class="time-input">
+                        <label for="guide-time">Tour Time:</label>
+                        <input type="time" id="guide-time" class="booking-time">
+                    </div>
+                </div>
+                <div class="cards" id="guides"></div>
+            </section>
+        </div>
+        
+        <!-- Proceed to Payment Section -->
+        <div class="payment-section">
+            <button id="proceed-to-payment" class="proceed-btn" disabled>Proceed to Payment</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
